@@ -116,7 +116,7 @@ class MJPEGStreamHandler(BaseHTTPRequestHandler, object):
                 return
             return
         except IOError:
-            self.send_error(404,'File Not Found: %s' % self.path)
+            self.send_error(404,'File Not Found: %s' % curdir + sep + self.path)
 
 
 class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
