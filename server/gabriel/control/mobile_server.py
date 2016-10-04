@@ -295,10 +295,10 @@ class MobileResultHandler(MobileSensorHandler):
                 rtn_header_json[gabriel.Protocol_client.JSON_KEY_RESULT_MESSAGE]=rtn_data
                 rtn_header=json.dumps(rtn_header_json)
                 packet = struct.pack("!I{}s".format(len(rtn_header)), len(rtn_header), rtn_header)
-                LOG.info("message sent to the Glass: %s", gabriel.util.print_rtn(rtn_header_json))
+                LOG.info("message sent to the Glass: %s", rtn_header_json)
             else:
                 packet = struct.pack("!I{}s{}s".format(len(rtn_header),len(rtn_data)), len(rtn_header), rtn_header, rtn_data)
-                LOG.info("message sent to the Glass: %s", gabriel.util.print_rtn(rtn_header_json))
+                LOG.info("message sent to the Glass: %s", rtn_header_json)
             self.request.send(packet)
             self.wfile.flush()
 
