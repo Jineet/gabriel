@@ -34,6 +34,8 @@ import os
 import sys
 if os.path.isdir("../../gabriel"):
     sys.path.insert(0, "../..")
+if os.path.isdir("../gabriel"):
+    sys.path.insert(0, "..")
 import gabriel
 import gabriel.proxy
 #from gabriel.proxy.common import AppProxyStreamingClient
