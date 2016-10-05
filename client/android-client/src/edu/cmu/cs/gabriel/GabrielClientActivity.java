@@ -217,12 +217,17 @@ public class GabrielClientActivity extends Activity implements TextToSpeech.OnIn
     private void notifyToken() {
         Message msg = Message.obtain();
         msg.what = NetworkProtocol.NETWORK_RET_TOKEN;
-        receivedPacketInfo.setGuidanceDoneTime(System.currentTimeMillis());
-        msg.obj = receivedPacketInfo;
-        try {
-            tokenController.tokenHandler.sendMessage(msg);
-        } catch (NullPointerException e) {
-            // might happen because token controller might have been terminated
+        if(receivedPacketInfo != null){
+            receivedPacketInfo.setGuidanceDoneTime(System.currentTimeMillis());
+            msg.obj = receivedPacketInfo;
+            try {
+                tokenController.tokenHandler.sendMessage(msg);
+            } catch (NullPointerException e) {
+                // might happen because token controller might have been terminated
+            }
+        }
+        else{
+            Log.d(LOG_TAG, "NULL VALUE");
         }
     }
     
